@@ -8,42 +8,42 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'evenements',
         children: [
           {
             path: '',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            loadChildren: '../evenements/evenements.module#EvenementsPageModule'
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'covoiturage',
         children: [
           {
             path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
+            loadChildren: '../covoiturage/covoiturage.module#CovoituragePageModule'
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'boncoin',
         children: [
           {
             path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
+            loadChildren: '../boncoin/boncoin.module#BoncoinPageModule'
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/evenements',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/evenements',
     pathMatch: 'full'
   }
 ];
