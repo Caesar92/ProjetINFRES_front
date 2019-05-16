@@ -4,6 +4,7 @@
 export class Evenement {
 
   private _id: string;
+  private _title: string;
   private _image: string;
   private _startDate: Date;
   private _endDate: Date;
@@ -12,6 +13,7 @@ export class Evenement {
 
   constructor(fields: {
     id: string,
+    title: string,
     image: string,
     startDate: Date,
     endDate: Date,
@@ -20,6 +22,7 @@ export class Evenement {
   }) {
     if (fields) {
       this.id = fields.id;
+      this.title = fields.title;
       this.image = fields.image;
       this.startDate = fields.startDate;
       this.endDate = fields.endDate;
@@ -28,6 +31,13 @@ export class Evenement {
     }
   }
 
+  get title(): string {
+    return this._title;
+  }
+
+  set title(value: string) {
+    this._title = value;
+  }
 
   get id(): string {
     return this._id;

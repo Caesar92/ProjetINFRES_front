@@ -1,0 +1,58 @@
+{
+  "APP": {
+    "ERROR_MESSAGE": {
+      "PASSWORD_RESET": "Il y a un problème dans l'url",
+      "ACCOUNT_CONFIRM": "L'URL est invalide."
+    },
+    "SUCCESS_MESSAGE": {
+      "ACCOUNT_CONFIRM": {
+        "HEADER": "Super !",
+        "TEXT": "Votre e-mail est confirmée. Connectez-vous dès maintenant à l’application.",
+        "BUTTON": "C'est parti !"
+      },
+      "PASSWORD_LOST": {
+        "TEXT": "Si nous avons trouvé un compte associé à l’adresse {{ email }} alors vous venez de recevoir un e-mail qui permet de définir un nouveau mot de passe.",
+        "BUTTON": "Ok"
+      },
+      "PASSWORD_RESET": "Votre mot de passe a bien été modifié !",
+      "RESEND_CONFIRMATION": "Email envoyé !",
+      "REGISTER": "Un e-mail vous a été envoyé. Cliquez sur le lien pour confirmer votre compte.",
+      "PROFILE_INFO": "Vos modifications ont bien été enregistrées !",
+      "RESEND_CONFIRMATION_LOGIN": "Un nouvel email de confirmation vous a été envoyé. Cliquez sur le lien pour confirmer votre compte."
+    }
+  },
+  "PAGES": {
+    "LOGIN": {
+      "EMAIL": "Adresse mail",
+      "EMAIL_ERROR_REQUIRED": "Ce champ est requis",
+      "EMAIL_ERROR_FORMAT": "Veuillez entrer un email valide",
+      "PASSWORD": "Mot de passe",
+      "PASSWORD_ERROR_REQUIRED": "Ce champ est requis",
+      "CONNECT": "Se connecter",
+      "REGISTER": "Pas de compte? S'inscrire",
+      "REMEMBER_ME": "Se souvenir de moi",
+      "PASSWORD_LOST": "Mot de passe oublié ?"
+    },
+    "REGISTER": {
+      "FIRSTNAME": "Prénom",
+      "LASTNAME": "Nom",
+      "EMAIL": "Adresse mail",
+      "PASSWORD": "Mot de passe",
+      "PASSWORD_CONFIRMATION": "Retapez le mot de passe",
+      "PASSWORD_ERROR_NOT_SAME": "Les mots de passes ne sont pas identiques",
+      "PASSWORD_ERROR_MIN_LENGTH": "Votre mot de passe doit faire au moins 6 caractères",
+      "PHONE": "Téléphone",
+      "BIRTHDATE": "Date de naissance",
+      "BIRTHDATE_ERROR_AGE": "Il faut avoir 15 ans minimum",
+      "REGISTER": "S'inscrire",
+      "GENDER_NOT_CHOOSE": "Il faut choisir votre genre",
+      "FIELD_REQUIRED": "Ce champ est requis.",
+      "EMAIL_ERROR_FORMAT": "Veuillez entrer un email valide",
+      "PHONE_INCORRECT": "Veuillez saisir un téléphone valide"
+    },
+    "GENDER": {
+      "MALE": "Homme",
+      "FEMALE": "Femme"
+    }
+  }
+}

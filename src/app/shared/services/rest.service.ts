@@ -11,7 +11,7 @@ import {catchError, map, tap} from 'rxjs/operators';
 })
 export class RestService {
 
-  protected webservicesUrl = 'http://demo1558396.mockable.io/';
+  protected webservicesUrl = 'http://localhost/';
 
   protected useMocks = false;
 
@@ -25,10 +25,10 @@ export class RestService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    if (this.appState.token !== null) {
-      headers = headers.set('Authorization', 'Bearer ' + this.appState.token);
-    }
 
+    this.appState.getToken().then(token => {
+      headers = headers.set('Authorization', 'Bearer ' + token);
+    });
 
     return headers;
   }
@@ -38,9 +38,6 @@ export class RestService {
    * Appel GET
    */
   protected get<T>(path: string, params: any): Observable<T> {
-    console.log(path);
-
-    console.log("get req");
     return this.http.get<T>((path.indexOf('data') === 0 ? '' : this.webservicesUrl) + path, {
       headers: this.headers,
       responseType: 'json',
@@ -48,6 +45,29 @@ export class RestService {
       observe: 'response'
     }).pipe(
       tap((res) => console.log('HTTP GET - ' + path)),
+      map((response: HttpResponse<T>) => (response.body)),
+      catchError(this.handleError(path)),
+    );
+  }
+
+  /**
+   * Appel POST
+   */
+  protected post<T>(path: string, params: any, data: object): Observable<T> {
+
+    const httpParams: HttpParams = new HttpParams({fromObject: params});
+    let urlParams = httpParams.toString();
+    if (urlParams) {
+      urlParams = urlParams.replace(/%5B%5D/g, '[]');
+    }
+    return this.http.post<T>(this.webservicesUrl + this.mapParameters(path, params) + '?' + urlParams, data, {
+        headers: this.headers,
+        responseType: 'json',
+        withCredentials: true,
+        observe: 'response'
+      }
+    ).pipe(
+      tap((res) => console.log('HTTP POST - ' + path)),
       map((response: HttpResponse<T>) => (response.body)),
       catchError(this.handleError(path)),
     );
@@ -72,24 +92,15 @@ export class RestService {
 
   /**
    * tt
-   * @param path
-   * @param params
    */
   protected mapParameters(path: string, params?: object): string {
-    console.log(path);
-    console.log(params);
     if (params) {
       for (const key in params) {
         if (params.hasOwnProperty(key)) {
-          if (!this.useMocks) {
-            path = path.replace(':' + key, params[key]);
-          } else {
-            path = path.replace(':' + key, '1');
-          }
+          path = path.replace(':' + key, params[key]);
         }
       }
     }
-
     return path;
   }
 }

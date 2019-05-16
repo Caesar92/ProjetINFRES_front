@@ -32,11 +32,12 @@ export class EvenementService extends RestService {
           for (const evenement of result.evenements) {
             evenements.push(new Evenement({
               id: evenement.id,
-              image: evenement.image,
               title: evenement.title,
+              image: evenement.image,
               startDate: new Date(evenement.startDate),
               endDate: new Date(evenement.endDate),
               summary: evenement.summary,
+              content: evenement.content,
             }));
           }
         }
