@@ -4,13 +4,11 @@
       <h1>Connexion</h1>
     </div>
     <div class="login-form">
-      <i class="fas fa-check-circle"></i>
       <form [formGroup]="loginForm">
         <div class="form-group input">
           <input type="email" formControlName="email" class="form-control" id="email"
                  placeholder="{{ 'PAGES.LOGIN.EMAIL' | translate }}"
                  [ngClass]="{ 'is-valid': submitted && !f.email.errors }"/>
-          <i class="fas fa-check-circle"></i>
           <div *ngIf="submitted && f.email.errors" class="invalid">
             <div *ngIf="f.email.errors.required">{{ 'PAGES.LOGIN.EMAIL_ERROR_REQUIRED' | translate }}</div>
             <div *ngIf="f.email.errors.email">{{ 'PAGES.LOGIN.EMAIL_ERROR_FORMAT' | translate }}</div>

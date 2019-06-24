@@ -1,0 +1,20 @@
+<ion-content>
+  <ion-card class="ion-card-title">
+    <ion-card-header>
+      {{evenement.titre}}
+    </ion-card-header>
+  </ion-card>
+
+  <ion-list class="event-list">
+    <ion-card class="event-card">
+      <ion-img *ngIf="evenement.image" src="{{ evenement.image.url }}"></ion-img>
+      <ion-card-header>
+        <ion-card-title>{{ evenement.titre }}</ion-card-title>
+        <ion-card-subtitle>{{ evenement.date |  date  }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ evenement.description }}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

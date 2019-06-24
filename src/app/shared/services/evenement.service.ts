@@ -11,12 +11,6 @@ import {AppStateService} from './app-state.service';
   providedIn: 'root'
 })
 export class EvenementService extends RestService {
-
-  /**
-   * Prix maximum utilisé comme valeur maximum pour le slider de prix dans les filtres
-   */
-  public static readonly PRICE_MAX = 200;
-
   constructor(protected http: HttpClient, protected appState: AppStateService) {
     super(http, appState);
   }
@@ -26,22 +20,28 @@ export class EvenementService extends RestService {
    */
   public getEvenements(): Observable<Evenement[]> {
     return new Observable<Evenement[]>(observer => {
-      this.get<any>('api/evenements', {}).subscribe(result => {
+      this.get<any>('api/events', {}).subscribe(result => {
         const evenements: Evenement[] = [];
-        if (result.evenements && isArray(result.evenements)) {
-          for (const evenement of result.evenements) {
-            evenements.push(new Evenement({
-              id: evenement.id,
-              title: evenement.title,
-              image: evenement.image,
-              startDate: new Date(evenement.startDate),
-              endDate: new Date(evenement.endDate),
-              summary: evenement.summary,
-              content: evenement.content,
-            }));
+        if (result.data && isArray(result.data)) {
+          for (const evenement of result.data) {
+            console.log(evenement);
+            evenements.push(evenement as Evenement);
           }
         }
         observer.next(evenements);
+        observer.complete();
+      }, error => {
+        observer.error(error);
+        observer.complete();
+      });
+    });
+  }
+
+
+  public addEvenement(data): Observable<boolean> {
+    return new Observable<boolean>(observer => {
+      this.post<any>('api/events', {}, data).subscribe(result => {
+        observer.next(true);
         observer.complete();
       }, error => {
         observer.error(error);

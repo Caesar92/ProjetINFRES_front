@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EventDetailsPage } from './event-details.page';
+import { AddCovoiturageComponent } from './add-covoiturage.component';
 
-describe('EventDetailsPage', () => {
-  let component: EventDetailsPage;
-  let fixture: ComponentFixture<EventDetailsPage>;
+describe('AddCovoiturageComponent', () => {
+  let component: AddCovoiturageComponent;
+  let fixture: ComponentFixture<AddCovoiturageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventDetailsPage ],
+      declarations: [ AddCovoiturageComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventDetailsPage);
+    fixture = TestBed.createComponent(AddCovoiturageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

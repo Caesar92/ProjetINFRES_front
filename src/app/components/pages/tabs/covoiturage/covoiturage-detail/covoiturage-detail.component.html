@@ -1,0 +1,19 @@
+<ion-content>
+  <ion-card class="ion-card-title">
+    <ion-card-header>
+      Covoiturage
+    </ion-card-header>
+  </ion-card>
+
+  <ion-list class="event-list">
+    <ion-card class="event-card">
+      <ion-card-header>
+        <ion-card-title>{{ covoit.lieu_depart }} -> {{covoit.lieu_arrive}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Heure du départ : {{ covoit.heure_depart | date }}</p>
+        <p>Passagers max : {{covoit.passagers_max}}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

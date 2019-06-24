@@ -1,5 +1,8 @@
 <ion-content>
   <div class="main-wrapper">
+    <div class="back">
+      <i class="fa fa-2x fa-arrow-left" [routerLink]="['/login']"></i>
+    </div>
     <div class="header">
       <h1>Inscription</h1>
     </div>
@@ -8,34 +11,74 @@
       <form [formGroup]="registerForm">
         <div class="form-group input">
           <input type="email" formControlName="email" class="form-control" id="email"
-                 placeholder="{{ 'PAGES.LOGIN.EMAIL' | translate }}"
+                 placeholder="{{ 'PAGES.REGISTER.EMAIL' | translate }}"
                  [ngClass]="{ 'is-valid': submitted && !f.email.errors }"/>
           <i class="fas fa-check-circle"></i>
           <div *ngIf="submitted && f.email.errors" class="invalid">
-            <div *ngIf="f.email.errors.required">{{ 'PAGES.LOGIN.EMAIL_ERROR_REQUIRED' | translate }}</div>
-            <div *ngIf="f.email.errors.email">{{ 'PAGES.LOGIN.EMAIL_ERROR_FORMAT' | translate }}</div>
+            <div *ngIf="f.email.errors.required">{{ 'PAGES.REGISTER.EMAIL_ERROR_REQUIRED' | translate }}</div>
+            <div *ngIf="f.email.errors.email">{{ 'PAGES.REGISTER.EMAIL_ERROR_FORMAT' | translate }}</div>
           </div>
-
         </div>
-        <div class="form-group input password-input">
+
+        <!-- Champ nom -->
+        <div class="form-group lastname input">
+          <input type="text" formControlName="lastname" class="form-control" id="lastname"
+                 placeholder="{{ 'PAGES.REGISTER.LASTNAME' | translate }}"
+                 [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"/>
+          <div *ngIf="submitted  && f.lastname.errors" class="invalid">
+            <div *ngIf="f.lastname.errors.required">{{ 'PAGES.REGISTER.FIELD_REQUIRED' | translate }}</div>
+          </div>
+        </div>
+        <!-- Champ prénom -->
+        <div class="form-group firstname input">
+          <input type="text" formControlName="firstname" class="form-control" id="firstname"
+                 placeholder="{{ 'PAGES.REGISTER.FIRSTNAME' | translate }}"
+                 [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }"/>
+          <div *ngIf="submitted  && f.firstname.errors" class="invalid">
+            <div *ngIf="f.firstname.errors.required">{{ 'PAGES.REGISTER.FIELD_REQUIRED' | translate }}</div>
+          </div>
+        </div>
+        <!-- Champ genre -->
+        <div class="form-group gender input">
+          <button type="button" class="btn btn-gender female" (click)="switchGender('female')"
+                  [ngClass]="{'active': choosenGender == 'female', 'is-invalid': submitted && (registerForm.hasError('notGender'))}">
+            {{ 'PAGES.GENDER.FEMALE' | translate }}
+          </button>
+          <button type="button" class="btn btn-gender male" (click)="switchGender('male')"
+                  [ngClass]="{'active': choosenGender == 'male', 'is-invalid': submitted && (registerForm.hasError('notGender'))}">
+            {{ 'PAGES.GENDER.MALE' | translate }}
+          </button>
+          <div *ngIf="submitted && registerForm.hasError('notGender')" class="invalid">
+            <div *ngIf="registerForm.hasError('notGender')">{{ 'PAGES.REGISTER.GENDER_NOT_CHOOSE' | translate }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group input input">
           <input type="password" formControlName="password" class="form-control"
-                 id="password" placeholder="{{ 'PAGES.LOGIN.PASSWORD' | translate }}"
+                 id="password" placeholder="{{ 'PAGES.REGISTER.PASSWORD' | translate }}"
                  [ngClass]="{ 'is-valid': submitted && !f.password.errors }"/>
           <div *ngIf="submitted && f.password.errors" class="invalid">
-            <div *ngIf="f.password.errors.required">{{ 'PAGES.LOGIN.PASSWORD_ERROR_REQUIRED' | translate }}</div>
+            <div *ngIf="f.password.errors.required">{{ 'PAGES.REGISTER.PASSWORD_ERROR_REQUIRED' | translate }}</div>
+          </div>
+        </div>
+
+        <div class="form-group input input">
+          <input type="password" formControlName="password_confirm" class="form-control"
+                 id="password_confirm" placeholder="{{ 'PAGES.REGISTER.PASSWORD_CONFIRMATION' | translate }}"
+                 [ngClass]="{ 'is-valid': submitted && !f.password.errors }"/>
+          <div *ngIf="submitted && f.password.errors" class="invalid">
+            <div *ngIf="f.password.errors.required">{{ 'PAGES.REGISTER.PASSWORD_ERROR_REQUIRED' | translate }}</div>
           </div>
         </div>
 
         <div class="form-group buttons">
-          <!--<button type="submit" class="btn btn-secondary" [routerLink]="['/register']">{{ 'PAGES.LOGIN.REGISTER' | translate }}</button>-->
-          <button type="submit" class="btn btn-primary" (click)="onSubmit()">{{ 'PAGES.LOGIN.CONNECT' | translate }}</button>
-          <a class="link password-lost" [routerLink]="['/register']">{{ 'PAGES.LOGIN.PASSWORD_LOST' | translate }}</a>
+          <button type="submit" class="btn btn-primary" (click)="onSubmit()">{{ 'PAGES.REGISTER.REGISTER' | translate
+            }}
+          </button>
         </div>
 
       </form>
-    </div>
-    <div class="bottom">
-      <a class="link register" [routerLink]="['/register']">{{ 'PAGES.LOGIN.REGISTER' | translate }}</a>
     </div>
 
     <!--<div class="loader-wrapper" *ngIf="loading">

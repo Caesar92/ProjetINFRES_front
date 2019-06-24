@@ -7,6 +7,9 @@ import {Storage} from '@ionic/storage';
 })
 export class AppStateService {
 
+  protected _token: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
+
   /**
    * Clé localstorage token
    */
@@ -27,13 +30,21 @@ export class AppStateService {
   constructor(private storage: Storage) {
   }
 
+  public set token(value: string) {
+    this._token.next(value);
+  }
+
+  public get token(): string {
+    return this._token.getValue();
+  }
+
   /**
    * Get Token
    */
   public getToken() {
     return new Promise((resolve, reject) => {
       this.storage.get(this.LS_TOKEN).then((val) => {
-        resolve(val);
+        this.token = val;
       }).catch(ex => {
         reject(ex);
       });

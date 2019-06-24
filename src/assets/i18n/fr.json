@@ -22,6 +22,16 @@
     }
   },
   "PAGES": {
+    "EVENT": {
+      "ADD_EVENT": {
+        "TITLE": "Titre",
+        "ERROR_REQUIRED": "Ce champ est requis.",
+        "DESCRIPTION": "Description",
+        "LIEU": "Lieu",
+        "LIMITE_PARTICIPANT" : "Limite de participants",
+        "SUBMIT": "Ajouter l'evenement"
+      }
+    },
     "LOGIN": {
       "EMAIL": "Adresse mail",
       "EMAIL_ERROR_REQUIRED": "Ce champ est requis",
@@ -39,6 +49,7 @@
       "EMAIL": "Adresse mail",
       "PASSWORD": "Mot de passe",
       "PASSWORD_CONFIRMATION": "Retapez le mot de passe",
+      "EMAIL_ERROR_REQUIRED": "Ce champ est requis",
       "PASSWORD_ERROR_NOT_SAME": "Les mots de passes ne sont pas identiques",
       "PASSWORD_ERROR_MIN_LENGTH": "Votre mot de passe doit faire au moins 6 caractères",
       "PHONE": "Téléphone",
@@ -48,7 +59,8 @@
       "GENDER_NOT_CHOOSE": "Il faut choisir votre genre",
       "FIELD_REQUIRED": "Ce champ est requis.",
       "EMAIL_ERROR_FORMAT": "Veuillez entrer un email valide",
-      "PHONE_INCORRECT": "Veuillez saisir un téléphone valide"
+      "PHONE_INCORRECT": "Veuillez saisir un téléphone valide",
+      "PASSWORD_ERROR_REQUIRED": "Ce champ est requis"
     },
     "GENDER": {
       "MALE": "Homme",

@@ -61,10 +61,12 @@ export class LoginPage implements OnInit {
     }
     this.loading = true;
 
-    this.auth.login('password', 'fgfdgdf', 'gdfgfd').subscribe(
+
+    this.auth.login('password', this.loginForm.controls.email.value, this.loginForm.controls.password.value).subscribe(
       resolve => {
         console.log(resolve);
-        // console.log(this.appState.token);
+        console.log(this.appState.getToken());
+        this.router.navigate(['tabs/evenements']);
       },
       (error: HttpErrorResponse) => {
         console.log(error);

@@ -17,6 +17,8 @@ export class RegisterPage implements OnInit {
    */
   public submitted = false;
 
+  public choosenGender = undefined;
+
   /**
    * Formulaire de connexion
    */
@@ -40,11 +42,52 @@ export class RegisterPage implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
-
-      password: ['', Validators.required]
+      // promotion: ['', Validators.required],
+      // birthdate: ['', [Validators.required]],
+      password: ['', Validators.required],
+      password_confirm: ['', Validators.required],
     });
-
+    this.registerForm.setValidators([this.passwordValidator, /*this.ageValidator,*/ this.genderValidator.bind(this)]);
   }
+
+  /**
+   * Change le choix du genre (homme/femme)
+   */
+  public switchGender(gender: string): void {
+    this.choosenGender = gender;
+    // Relance la validation du formulaire
+    this.registerForm.updateValueAndValidity();
+  }
+
+  /**
+   * Vérifie si les deux champs mot de passe sont identiques
+   */
+  public passwordValidator(form: FormGroup): any {
+    const pass = form.controls.password.value;
+    const confirmPass = form.controls.password_confirm.value;
+
+    return (pass === confirmPass ? null : {notSame: true});
+  }
+
+  /**
+   * Vérifie que l'utilisateur a 15 ans
+   */
+  public ageValidator(form: FormGroup): any {
+    const birthdate = new Date(form.controls.birthdate.value);
+    const min_date = new Date();
+    min_date.setFullYear(min_date.getFullYear() - 15);
+
+    return (birthdate.getTime() < min_date.getTime() ? null : {minAge: true});
+  }
+
+
+  /**
+   * Vérifie qu'un genre a été choisi
+   */
+  public genderValidator(form: FormGroup): any {
+    return (this.choosenGender !== undefined ? null : {notGender: true});
+  }
+
 
   /**
    *  Fonction qui renvoie le formulaire
@@ -58,12 +101,22 @@ export class RegisterPage implements OnInit {
    */
   public onSubmit(): void {
     this.submitted = true;
+    console.log("onSubmit");
     if (this.registerForm.invalid) {
+      console.log(this.registerForm);
       return;
     }
+
+    console.log(this.registerForm);
     this.loading = true;
 
-    /*this.auth.login('password', 'fgfdgdf', 'gdfgfd').subscribe(
+    const user = {
+      email: this.registerForm.controls.email.value,
+      username: this.registerForm.controls.firstname.value,
+      password: this.registerForm.controls.password.value,
+    };
+
+    this.auth.register(user).subscribe(
       resolve => {
         console.log(resolve);
         // console.log(this.appState.token);
@@ -71,6 +124,6 @@ export class RegisterPage implements OnInit {
       (error: HttpErrorResponse) => {
         console.log(error);
       });
-      */
+
   }
 }

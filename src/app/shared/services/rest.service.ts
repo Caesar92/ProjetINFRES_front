@@ -26,10 +26,12 @@ export class RestService {
       'Content-Type': 'application/json'
     });
 
-    this.appState.getToken().then(token => {
-      headers = headers.set('Authorization', 'Bearer ' + token);
-    });
+    console.log(this.appState.token);
+    if (this.appState.token) {
+      headers = headers.set('Authorization', 'Bearer ' + this.appState.token);
+    }
 
+    console.log(headers);
     return headers;
   }
 

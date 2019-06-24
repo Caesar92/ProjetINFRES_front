@@ -1,0 +1,79 @@
+<ion-content>
+  <ion-card class="ion-card-title">
+    <ion-card-header>
+       Ajouter un évenement
+    </ion-card-header>
+  </ion-card>
+
+  <ion-list class="event-list">
+    <ion-card class="event-card">
+      <ion-card-header>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="addEventForm">
+          <div class="form-group input">
+            <ion-input type="text" formControlName="title" class="form-control" id="title"
+                   placeholder="{{ 'PAGES.EVENT.ADD_EVENT.TITLE' | translate }}"></ion-input>
+
+            <!--<div class="validation-errors">
+              <ng-container class="error-messages">
+                <div *ngIf="addEventForm.get('title').errors &&
+                     (addEventForm.get('title').dirty || addEventForm.get('title').touched)" class="invalid">
+                  <div *ngIf="addEventForm.get('title').hasError('required')">{{ 'PAGES.EVENT.ADD_EVENT.ERROR_REQUIRED' | translate }}</div>
+                </div>
+              </ng-container>
+            </div>-->
+          </div>
+
+          <div class="form-group input">
+            <ion-input type="text" formControlName="description" class="form-control" id="description"
+                       placeholder="{{ 'PAGES.EVENT.ADD_EVENT.DESCRIPTION' | translate }}"></ion-input>
+
+            <!--<div class="validation-errors">
+              <ng-container class="error-messages">
+                <div *ngIf="addEventForm.get('description').errors &&
+                     (addEventForm.get('description').dirty || addEventForm.get('description').touched)" class="invalid">
+                  <div *ngIf="addEventForm.get('description').hasError('required')">{{ 'PAGES.EVENT.ADD_EVENT.ERROR_REQUIRED' | translate }}</div>
+                </div>
+              </ng-container>
+            </div>-->
+          </div>
+
+          <div class="form-group input">
+            <ion-item>
+              <ion-label>Date</ion-label>
+              <ion-datetime formControlName="dateDebut" display-format="MMM DD, YYYY HH:mm"
+                            monthShortNames="Jan, Feb, Mar, Avr, Mai, Juin, Juil, Août, Sept, Oct, Nov, Dec">
+              </ion-datetime>
+            </ion-item>
+
+            <div class="validation-errors">
+              <ng-container class="error-messages">
+                <div *ngIf="addEventForm.get('title').errors &&
+                     (addEventForm.get('title').dirty || addEventForm.get('title').touched)" class="invalid">
+                  <div *ngIf="addEventForm.get('title').hasError('required')">{{ 'PAGES.EVENT.ADD_EVENT.ERROR_REQUIRED' | translate }}</div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
+          <div class="form-group input">
+            <ion-input type="text" formControlName="lieu" class="form-control" id="lieu"
+                       placeholder="{{ 'PAGES.EVENT.ADD_EVENT.LIEU' | translate }}"></ion-input>
+          </div>
+
+          <div class="form-group input">
+            <ion-input type="number" formControlName="limiteParticipants" class="form-control" id="limiteParticipants"
+                       placeholder="{{ 'PAGES.EVENT.ADD_EVENT.LIMITE_PARTICIPANT' | translate }}"></ion-input>
+          </div>
+
+          <div class="form-group buttons">
+            <!--<button type="submit" class="btn btn-secondary" [routerLink]="['/register']">{{ 'PAGES.LOGIN.REGISTER' | translate }}</button>-->
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">{{ 'PAGES.EVENT.ADD_EVENT.SUBMIT' | translate }}</button>
+          </div>
+
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

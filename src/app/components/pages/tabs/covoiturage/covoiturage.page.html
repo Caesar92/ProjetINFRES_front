@@ -1,0 +1,23 @@
+<ion-content>
+  <ion-card class="ion-card-title" >
+    <ion-card-header>
+      Co-voiturage
+    </ion-card-header>
+    <ion-button class="add-covoit" shape="round" (click)="openAddCovoiturage()" float-right><ion-icon name="add"></ion-icon></ion-button>
+  </ion-card>
+
+  <ion-list class="covoit-list">
+    <div *ngFor="let covoiturage of covoiturages">
+      <ion-card class="covoit-card" (click)="openDetail(covoiturage)">
+        <ion-card-header>
+          <ion-card-title>{{ covoiturage.lieu_depart }} --> {{covoiturage.lieu_arrive}}</ion-card-title>
+          <ion-card-subtitle>{{ covoiturage.heure_depart | date }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Passagers max : {{ covoiturage.passagers_max }}</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-list>
+
+</ion-content>

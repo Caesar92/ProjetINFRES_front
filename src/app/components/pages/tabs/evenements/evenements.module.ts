@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
 import { EvenementsPage } from './evenements.page';
-import {EventComponent} from './components/event/event.component';
+import {EvenementDetailComponent} from './evenement-detail/evenement-detail.component';
+import {AddEvenementComponent} from './add-evenement/add-evenement.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
   {
@@ -19,9 +21,12 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes),
+    TranslateModule
   ],
-  declarations: [EvenementsPage, EventComponent]
+  declarations: [EvenementsPage, EvenementDetailComponent, AddEvenementComponent],
+  entryComponents: [EvenementDetailComponent, AddEvenementComponent]
 })
 export class EvenementsPageModule {}

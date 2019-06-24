@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { CovoituragePage } from './covoiturage.page';
+import {CovoiturageDetailComponent} from './covoiturage-detail/covoiturage-detail.component';
+import {AddCovoiturageComponent} from './add-covoiturage/add-covoiturage.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CovoituragePage]
+  declarations: [CovoituragePage, CovoiturageDetailComponent, AddCovoiturageComponent],
+  entryComponents: [CovoiturageDetailComponent, AddCovoiturageComponent]
 })
 export class CovoituragePageModule {}

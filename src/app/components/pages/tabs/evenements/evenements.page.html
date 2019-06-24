@@ -1,0 +1,24 @@
+<ion-content>
+  <ion-card class="ion-card-title" >
+    <ion-card-header>
+      Evenements
+    </ion-card-header>
+    <ion-button class="add-event" shape="round" (click)="openAddEvenement()" float-right><ion-icon name="add"></ion-icon></ion-button>
+  </ion-card>
+
+  <ion-list class="event-list">
+    <div *ngFor="let evenement of evenements">
+      <ion-card class="event-card" (click)="openDetail(evenement)">
+        <ion-img *ngIf="evenement.image" src="{{ evenement.image.url }}"></ion-img>
+        <ion-card-header>
+          <ion-card-title>{{ evenement.titre }}</ion-card-title>
+          <ion-card-subtitle>{{ evenement.date | date }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <p>{{ evenement.description }}</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-list>
+
+</ion-content>

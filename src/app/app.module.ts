@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
 
@@ -10,22 +10,23 @@ import {TranslateLoader, TranslateModule, TranslatePipe} from '@ngx-translate/co
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {EventDetailsPage} from './components/pages/evenements/components/event-details/event-details.page';
-import {EventDetailsPageModule} from './components/pages/evenements/components/event-details/event-details.module';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {IonicStorageModule} from '@ionic/storage';
+import {registerLocaleData} from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [EventDetailsPage],
+  entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    EventDetailsPageModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -42,6 +43,7 @@ import {IonicStorageModule} from '@ionic/storage';
     StatusBar,
     SplashScreen,
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+    {provide: LOCALE_ID, useValue: 'fr'},
   ],
   bootstrap: [AppComponent]
 })

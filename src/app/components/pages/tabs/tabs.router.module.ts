@@ -12,7 +12,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../login/login.module#LoginPageModule'
+            loadChildren: './evenements/evenements.module#EvenementsPageModule'
           }
         ]
       },
@@ -21,7 +21,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../covoiturage/covoiturage.module#CovoituragePageModule'
+            loadChildren: './covoiturage/covoiturage.module#CovoituragePageModule'
           }
         ]
       },
@@ -30,7 +30,16 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../boncoin/boncoin.module#BoncoinPageModule'
+            loadChildren: './boncoin/boncoin.module#BoncoinPageModule'
+          }
+        ]
+      },
+      {
+        path: 'account',
+        children: [
+          {
+            path: '',
+            loadChildren: './account/account.module#AccountPageModule'
           }
         ]
       },
