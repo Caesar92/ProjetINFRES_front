@@ -1,6 +1,8 @@
 {
   "name": "EMApp_Front",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "5e8f718f"
 }

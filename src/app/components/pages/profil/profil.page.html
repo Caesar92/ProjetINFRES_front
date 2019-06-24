@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar color="favorite">
+    <ion-title>
+      Profil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- ## CONTENT ## -->
+<ion-content>
+
+  <ion-button expand="block" fill="outline" (click)="modifierInformations()">Modifier informations</ion-button>
+
+  <!-- ################## Détails ################## -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Détails</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <form [formGroup]="profilDetailForm">
+          <ion-item>
+            <ion-label>Gender</ion-label>
+            <ion-select placeholder="Select One">
+              <ion-select-option value="f">Female</ion-select-option>
+              <ion-select-option value="m">Male</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label-right">Prénom</ion-label>
+            <ion-input formControlName="prenom" [disabled]="isenabled" style="opacity:1;"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label-right">Nom</ion-label>
+            <ion-input formControlName="nom" [disabled]="isenabled" style="opacity:1;"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label-right">Promotion</ion-label>
+            <ion-input formControlName="promotion" [disabled]="isenabled" style="opacity:1;"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label-right">Date de naissance</ion-label>
+            <ion-input formControlName="dateNaissance" [disabled]="isenabled" style="opacity:1;"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label-right">Téléphone</ion-label>
+            <ion-input formControlName="telephone" [disabled]="isenabled" style="opacity:1;"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label-right">E-mail</ion-label>
+            <ion-input formControlName="email" [disabled]="isenabled" style="opacity:1;"></ion-input>
+          </ion-item>
+        </form>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- ################## Voiture ################## -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Voiture</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <form [formGroup]="profilVoitureForm">
+          <ion-item>
+            <ion-label class="label-right">Marque</ion-label>
+            <ion-input formControlName="marque" [disabled]="isenabled" style="opacity:1;"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label-right">Modèle</ion-label>
+            <ion-input formControlName="modele" [disabled]="isenabled" style="opacity:1;"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label-right">Couleur</ion-label>
+            <ion-input formControlName="couleur" [disabled]="isenabled" style="opacity:1;"></ion-input>
+          </ion-item>
+        </form>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- ################## Mot de passe ################## -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Mot de passe</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <form [formGroup]="profilPasswordForm">
+          <ion-item>
+            <ion-label class="label-right">Mot de passe actuel</ion-label>
+            <ion-input type="password" formControlName="password" [disabled]="isenabled" style="opacity:1;"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="showPassword">
+            <ion-label class="label-right">Nouveau mot de passe</ion-label>
+            <ion-input value="" [disabled]="isenabled" style="opacity:1;"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="showPassword">
+            <ion-label class="label-right">Confirmation mot de passe</ion-label>
+            <ion-input value="" [disabled]="isenabled" style="opacity:1;"></ion-input>
+          </ion-item>
+        </form>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+</ion-content>
