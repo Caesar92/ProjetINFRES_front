@@ -1,7 +1,8 @@
 ion-content {
   --background: #e7e7e7;
+
   ion-list {
-    margin: 10px;
+    margin: 0px;
     padding: 0;
     position: relative;
     top: -75px;
@@ -13,8 +14,6 @@ ion-content {
   }
 
   ion-card {
-
-
     &.ion-card-title {
       height: 175px;
       --background: #882737;
@@ -36,4 +35,10 @@ ion-content {
 
   }
 
+}
+
+.label-right{
+  order: 2;
+  opacity: 0.5;
+  font-size: 15px
 }
